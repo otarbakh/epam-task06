@@ -9,15 +9,15 @@ resource "random_password" "sql_admin" {
 }
 
 resource "azurerm_mssql_server" "this" {
-  name                         = var.server_name
-  resource_group_name          = var.resource_group_name
-  location                     = var.location
-  version                      = "12.0"
-  administrator_login          = var.sql_admin_login
-  administrator_login_password = random_password.sql_admin.result
-  minimum_tls_version          = "1.2"
+  name                          = var.server_name
+  resource_group_name           = var.resource_group_name
+  location                      = var.location
+  version                       = "12.0"
+  administrator_login           = var.sql_admin_login
+  administrator_login_password  = random_password.sql_admin.result
+  minimum_tls_version           = "1.2"
   public_network_access_enabled = true
-  tags                         = var.tags
+  tags                          = var.tags
 }
 
 # Allow Azure services
